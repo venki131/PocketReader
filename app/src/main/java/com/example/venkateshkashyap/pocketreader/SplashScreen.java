@@ -1,6 +1,7 @@
 package com.example.venkateshkashyap.pocketreader;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.venkateshkashyap.pocketreader.constants.Constants;
@@ -18,5 +19,7 @@ public class SplashScreen extends Activity {
         setContentView(R.layout.activity_splash);
 
         //new VolumeInfoHelper(this).getVolumeInfo(this, Constants.book_info);
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 }

@@ -72,7 +72,6 @@ public class VolumeInfo {
         this.description = description;
     }
 
-
     public ReadingModes getReadingModes() {
         return readingModes;
     }
