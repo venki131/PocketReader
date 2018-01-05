@@ -13,4 +13,19 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:src="@drawable/splash_screen_pocket_reader"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="harry potter"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:id="@+id/txt_book_name"
+        android:layout_alignBottom="@+id/img_thumbnail"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/cardview_light_background"
+        />
 </com.example.venkateshkashyap.pocketreader.helpers.SquareLayout>

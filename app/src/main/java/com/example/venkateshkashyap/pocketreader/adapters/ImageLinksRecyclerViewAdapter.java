@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -28,6 +29,7 @@ public class ImageLinksRecyclerViewAdapter extends RecyclerView.Adapter<ImageLin
     private List<Item> images = new ArrayList<>();
     private Context mContext;
     private String thumbnail_image;
+    public TextView bookName;
     private BookInfo bookInfo = new BookInfo();
     public ImageLinksRecyclerViewAdapter(Context context,List<Item> images){
         mContext = context;
@@ -45,6 +47,7 @@ public class ImageLinksRecyclerViewAdapter extends RecyclerView.Adapter<ImageLin
         images = bookInfo.getItems();
         holder.item = images.get(position);
         thumbnail_image = images.get(position).getVolumeInfo().getImageLinks().getThumbnail();
+        bookName.setText(holder.item.getVolumeInfo().getTitle());
         Glide.with(mContext).load(thumbnail_image)
                 .thumbnail(0.5f)
                 .crossFade()
@@ -81,6 +84,7 @@ public class ImageLinksRecyclerViewAdapter extends RecyclerView.Adapter<ImageLin
             super(itemView);
             mView = itemView;
             thumbnail_image = (ImageView) itemView.findViewById(R.id.img_thumbnail);
+            bookName = (TextView) itemView.findViewById(R.id.txt_book_name);
         }
     }
 }
