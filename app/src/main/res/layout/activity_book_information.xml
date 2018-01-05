@@ -51,7 +51,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="5dp"
-        android:layout_below="@id/txt_publishers">
+        android:layout_below="@id/img_small_thumbnail"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
