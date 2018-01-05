@@ -6,6 +6,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.example.venkateshkashyap.pocketreader.adapters.ImageLinksRecyclerViewAdapter;
 import com.example.venkateshkashyap.pocketreader.constants.Constants;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements ItemHelper.OnItem
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         images = new ArrayList<>();
@@ -49,6 +51,6 @@ public class MainActivity extends AppCompatActivity implements ItemHelper.OnItem
 
     @Override
     public void onFailure() {
-
+        Toast.makeText(this,"Try again!",Toast.LENGTH_LONG).show();
     }
 }
