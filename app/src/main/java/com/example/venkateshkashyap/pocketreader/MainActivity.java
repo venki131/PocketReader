@@ -6,6 +6,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.venkateshkashyap.pocketreader.adapters.ImageLinksRecyclerViewAdapter;
@@ -13,6 +15,7 @@ import com.example.venkateshkashyap.pocketreader.constants.Constants;
 import com.example.venkateshkashyap.pocketreader.helpers.ItemHelper;
 import com.example.venkateshkashyap.pocketreader.models.BookInfo;
 import com.example.venkateshkashyap.pocketreader.models.Item;
+import com.example.venkateshkashyap.pocketreader.utils.DialogUtils;
 
 import java.util.ArrayList;
 
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements ItemHelper.OnItem
     private ImageLinksRecyclerViewAdapter mAdapter;
     private RecyclerView recyclerView;
     private ArrayList<Item> images;
+    ProgressBar mProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements ItemHelper.OnItem
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         images = new ArrayList<>();
@@ -45,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements ItemHelper.OnItem
 
     @Override
     public void onItemResponseReceived(BookInfo item) {
+        mProgressBar.setVisibility(View.INVISIBLE);
+        DialogUtils.hideProgressDialog();
         mAdapter.setList(item);
     }
 
