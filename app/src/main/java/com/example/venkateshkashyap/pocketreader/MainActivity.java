@@ -9,17 +9,17 @@ import android.support.v7.widget.Toolbar;
 
 import com.example.venkateshkashyap.pocketreader.adapters.ImageLinksRecyclerViewAdapter;
 import com.example.venkateshkashyap.pocketreader.constants.Constants;
-import com.example.venkateshkashyap.pocketreader.helpers.VolumeInfoHelper;
-import com.example.venkateshkashyap.pocketreader.models.ImageLinks;
-import com.example.venkateshkashyap.pocketreader.models.VolumeInfo;
+import com.example.venkateshkashyap.pocketreader.helpers.ItemHelper;
+import com.example.venkateshkashyap.pocketreader.models.BookInfo;
+import com.example.venkateshkashyap.pocketreader.models.Item;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements VolumeInfoHelper.OnVolumeInfoResponseReceived {
+public class MainActivity extends AppCompatActivity implements ItemHelper.OnItemResponseReceived {
 
     private ImageLinksRecyclerViewAdapter mAdapter;
     private RecyclerView recyclerView;
-    private ArrayList<ImageLinks> images;
+    private ArrayList<Item> images;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,14 +38,14 @@ public class MainActivity extends AppCompatActivity implements VolumeInfoHelper.
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-        new VolumeInfoHelper(this).getVolumeInfo(this,Constants.book_info);
+        new ItemHelper(this).getItemInfo(this,Constants.BOOK_INFO);
     }
 
     @Override
-    public void onVolumeInfoResponseReceived(VolumeInfo volumeInfo) {
-        if (volumeInfo != null)
-            volumeInfo.setImageLinks(volumeInfo.getImageLinks());
+    public void onItemResponseReceived(BookInfo item) {
+        mAdapter.setList(item);
     }
+
 
     @Override
     public void onFailure() {

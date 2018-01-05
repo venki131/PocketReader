@@ -1,5 +1,7 @@
 package com.example.venkateshkashyap.pocketreader.NetworkManager;
 
+import com.example.venkateshkashyap.pocketreader.models.BookInfo;
+import com.example.venkateshkashyap.pocketreader.models.Item;
 import com.example.venkateshkashyap.pocketreader.models.VolumeInfo;
 
 import retrofit2.Call;
@@ -15,10 +17,10 @@ import retrofit2.http.Query;
 public interface ApiService {
 
     //URL for getting book information
-    String getBookInformationUrl = "/books/v1/volumes";
+    String getBookInformationUrl = "books/v1/volumes";
 
     @GET(getBookInformationUrl)
     @Headers({"Content-Type: application/json", "Accept: application/json"})
-    Call<VolumeInfo> getBookDetails(@Query("q") String book_info);
+    Call<BookInfo> getBookDetails(@Query("q") String book_info);
 
 }

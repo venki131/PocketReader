@@ -36,7 +36,7 @@ public class VolumeInfoHelper extends BaseHelper {
         mOnVolumeInfoResponseReceived = onVolumeInfoResponseReceived;
 
         if(NetworkUtil.isConnectionAvailable(mContext)) {
-            NetworkManager.getInstance().getBookDetails(mVolumeInfoCallback,book_info);
+           //NetworkManager.getInstance().getBookDetails(mVolumeInfoCallback,book_info);
         }else{
             mOnVolumeInfoResponseReceived.onFailure();
             Toast.makeText(mContext, "Please Check your Internet Connection and Try Again!", Toast.LENGTH_SHORT).show();
@@ -53,7 +53,7 @@ public class VolumeInfoHelper extends BaseHelper {
                 volumeInfo.setAuthors(response.body().getAuthors());
                 volumeInfo.setDescription(response.body().getDescription());
                 volumeInfo.setPublisher(response.body().getPublisher());
-                //volumeInfo.setImageLinks(response.body().getImageLinks());
+                volumeInfo.setImageLinks(response.body().getImageLinks());
                 mOnVolumeInfoResponseReceived.onVolumeInfoResponseReceived(volumeInfo);
                 Log.d(TAG, "onResponse: " + response.code());
             }else {

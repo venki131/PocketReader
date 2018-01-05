@@ -3,6 +3,8 @@ package com.example.venkateshkashyap.pocketreader.NetworkManager;
 import android.util.Log;
 
 import com.example.venkateshkashyap.pocketreader.constants.Constants;
+import com.example.venkateshkashyap.pocketreader.models.BookInfo;
+import com.example.venkateshkashyap.pocketreader.models.Item;
 import com.example.venkateshkashyap.pocketreader.models.VolumeInfo;
 
 import retrofit2.Call;
@@ -33,11 +35,11 @@ public class NetworkManager {
                 .build();
     }
 
-    public void getBookDetails(Callback<VolumeInfo> volumeInfoCallback, String book_info){
+    public void getBookDetails(Callback<BookInfo> itemCallback, String book_info){
         Log.d(TAG, "getBookDetails");
         ApiService apiService = getApiService();
-        Call<VolumeInfo> volumeInfoCall = apiService.getBookDetails(book_info);
-        volumeInfoCall.enqueue(volumeInfoCallback);
+        Call<BookInfo> itemCall = apiService.getBookDetails(book_info);
+        itemCall.enqueue(itemCallback);
     }
 
     private ApiService getApiService() {

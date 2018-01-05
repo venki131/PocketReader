@@ -4,10 +4,13 @@ package com.example.venkateshkashyap.pocketreader.models;
  * Created by Venkatesh Kashyap on 1/4/2018.
  */
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ReadingModes {
+public class ReadingModes implements Parcelable{
 
     @SerializedName("text")
     @Expose
@@ -15,6 +18,21 @@ public class ReadingModes {
     @SerializedName("image")
     @Expose
     private Boolean image;
+
+    protected ReadingModes(Parcel in) {
+    }
+
+    public static final Creator<ReadingModes> CREATOR = new Creator<ReadingModes>() {
+        @Override
+        public ReadingModes createFromParcel(Parcel in) {
+            return new ReadingModes(in);
+        }
+
+        @Override
+        public ReadingModes[] newArray(int size) {
+            return new ReadingModes[size];
+        }
+    };
 
     public Boolean getText() {
         return text;
@@ -32,4 +50,12 @@ public class ReadingModes {
         this.image = image;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+    }
 }
